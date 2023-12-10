@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://p8b2d2wdfgb4"]
+
+[ext_resource type="Texture2D" uid="uid://gm3kxw8g3apu" path="res://Assets/Leonardo_Diffusion_XL_2d_soccer_filed_Aerial_view_0.jpg" id="1_0cpbo"]
+[ext_resource type="Script" path="res://scenes/scripts/main.gd" id="1_bdujg"]
+[ext_resource type="Texture2D" uid="uid://xjt5jn2ekxym" path="res://icon.svg" id="2_7i2ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xfu1"]
+size = Vector2(177, 770)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnqv4"]
+size = Vector2(1146.5, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48xd4"]
+size = Vector2(1138, 201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhh47"]
+size = Vector2(116, 797)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il273"]
+size = Vector2(37, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk2k1"]
+size = Vector2(208.333, 208.333)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bdujg")
+
+[node name="PlayingField" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 770.0
+size_flags_vertical = 8
+texture = ExtResource("1_0cpbo")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(93.5, 385)
+shape = SubResource("RectangleShape2D_1xfu1")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(572.75, 114.5)
+shape = SubResource("RectangleShape2D_pnqv4")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(582, 687.5)
+shape = SubResource("RectangleShape2D_48xd4")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1086, 386.5)
+shape = SubResource("RectangleShape2D_fhh47")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+position = Vector2(586, 414)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7i2ja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(587, 414.25)
+shape = SubResource("RectangleShape2D_il273")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(256, 311)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(915, 156.667)
+texture = ExtResource("2_7i2ja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(913.333, 156.667)
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_sk2k1")
